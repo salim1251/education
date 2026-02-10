@@ -9,7 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #1b1b1b;
-            color: #fff;
+            color: #ffffff;
         }
 
         header {
@@ -31,8 +31,33 @@
 
         .description {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
+
+        .favorite {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #ff9800;
+        }
+
+        /* ===== ТЕКСТОВЫЕ БЛОКИ ===== */
+
+        .text-block {
+            background-color: #242424;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeUp 0.8s forwards;
+        }
+
+        .text-block h2 {
+            color: #ff9800;
+            margin-top: 0;
+        }
+
+        /* ===== КАРТОЧКИ ===== */
 
         .cards {
             display: flex;
@@ -46,23 +71,26 @@
             border-radius: 10px;
             width: 280px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s forwards;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card img {
             width: 100%;
             height: 180px;
             object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .card:hover img {
-            transform: scale(1.05);
         }
 
         .card-content {
@@ -75,20 +103,46 @@
             color: #ff9800;
         }
 
-        .card button {
-            margin-top: 10px;
-            padding: 8px 15px;
+        button {
+            margin: 5px;
+            padding: 8px 14px;
             border: none;
             border-radius: 5px;
             background-color: #ff9800;
-            color: #000;
-            cursor: pointer;
             font-weight: bold;
-            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
-        .card button:hover {
+        button:hover {
             background-color: #ffa726;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
         }
 
         footer {
@@ -107,39 +161,85 @@
 </header>
 
 <main>
+
     <div class="description">
+        <p>Rust — это суровая игра на выживание, где каждый игрок сам выбирает свой путь.</p>
+    </div>
+
+    <div class="favorite" id="favoriteText">
+        Вы пока не выбрали любимого персонажа
+    </div>
+
+    <div class="text-block">
+        <h2>О игре Rust</h2>
         <p>
-            Rust — это суровая игра про выживание, где каждый выбор может
-            стоить жизни.
+            Rust — многопользовательская игра в жанре выживания.
+            Игрок появляется в случайной точке карты без ресурсов
+            и должен самостоятельно добывать еду, материалы и оружие.
+        </p>
+        <p>
+            В игре отсутствуют чёткие правила — можно объединяться,
+            предавать, торговать или нападать на других игроков.
+        </p>
+    </div>
+
+    <div class="text-block">
+        <h2>Стили игры</h2>
+        <ul>
+            <li><b>Фармер</b> — добывает ресурсы и строит базы</li>
+            <li><b>Рейдер</b> — нападает на базы других игроков</li>
+            <li><b>Одиночка</b> — выживает в одиночку</li>
+            <li><b>Командный игрок</b> — играет в клане</li>
+        </ul>
+    </div>
+
+    <div class="text-block">
+        <h2>Почему Rust популярен</h2>
+        <p>
+            Rust популярен благодаря свободе действий,
+            высокой сложности и постоянному напряжению.
+        </p>
+        <p>
+            Каждая игровая сессия уникальна,
+            так как всё зависит от решений игроков.
         </p>
     </div>
 
     <div class="cards">
 
         <div class="card">
-            <img src="https://i.imgur.com/9XqvZ9m.jpg" alt="Выживший">
+            <img src="images/survivor.jpg" alt="Выживший">
             <div class="card-content">
                 <h3>Выживший</h3>
-                <p>Начинает с камня и факела. Самый опасный момент — первые минуты.</p>
-                <button>Подробнее</button>
+                <p>Начало пути.</p>
+                <button onclick="openModal('Выживший', 'Начинает с камня и факела. Самая сложная стадия игры.')">
+                    Подробнее
+                </button>
+                <button onclick="setFavorite('Выживший')">⭐ В любимые</button>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://i.imgur.com/8XKQ8QF.jpg" alt="Фармер">
+            <img src="images/farmer.jpg" alt="Фармер">
             <div class="card-content">
                 <h3>Фармер</h3>
-                <p>Добывает ресурсы и строит базу для команды.</p>
-                <button>Подробнее</button>
+                <p>Основа команды.</p>
+                <button onclick="openModal('Собирает ресурсы, занимается фермерством, строит базы и помогает команде развиваться.')">
+                    Подробнее
+                </button>
+                <button onclick="setFavorite('Фармер')">⭐ В любимые</button>
             </div>
         </div>
 
         <div class="card">
-            <img src="https://i.imgur.com/1n6Z8Zk.jpg" alt="Рейдер">
+            <img src="images/raider.jpg" alt="Рейдер">
             <div class="card-content">
                 <h3>Рейдер</h3>
-                <p>Любит взрывы, C4 и ночные рейды.</p>
-                <button>Подробнее</button>
+                <p>Любитель рейдов.</p>
+                <button onclick="openModal('Любит особенно взрывать базы ночью, убивать, лутать других игроков и доминировать на сервере.')">
+                    Подробнее
+                </button>
+                <button onclick="setFavorite('Рейдер')">⭐ В любимые</button>
             </div>
         </div>
 
@@ -149,6 +249,37 @@
 <footer>
     <p>© 2026 Rust Fan Site</p>
 </footer>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">✖</span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+    function openModal(title, text) {
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalText").innerText = text;
+        document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
+    function setFavorite(name) {
+        document.getElementById("favoriteText").innerText =
+            "⭐ Ваш любимый персонаж: " + name;
+    }
+
+    document.getElementById("modal").addEventListener("click", function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+</script>
 
 </body>
 </html>

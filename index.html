@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Портфолио — Казлыков Салим</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        nav {
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00e0ff;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        h2 {
+            border-bottom: 2px solid #00e0ff;
+            padding-bottom: 10px;
+        }
+
+        .card {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            background: rgba(0,0,0,0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            margin-top: 50px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #00e0ff;
+            color: black;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Казлыков Салим</h1>
+    <p>Студент Polytech College | Группа П23-3Е</p>
+</header>
+
+<nav>
+    <a href="#about">Обо мне</a>
+    <a href="#skills">Навыки</a>
+    <a href="#github">GitHub</a>
+    <a href="#contact">Контакты</a>
+</nav>
+
+<section id="about">
+    <h2>Обо мне</h2>
+    <div class="card">
+        <p>
+            Меня зовут Казлыков Салим. Я студент Polytech College,
+            обучаюсь в группе П23-3Е. Интересуюсь IT, программированием
+            и веб-разработкой. Постоянно развиваюсь и изучаю новые технологии.
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Навыки</h2>
+    <div class="card">
+        <ul style="list-style: none; padding: 0;">
+            <li>HTML</li>
+            <li>Основы CSS</li>
+            <li>Основы JavaScript</li>
+            <li>Git и GitHub</li>
+            <li>Командная работа</li>
+        </ul>
+    </div>
+</section>
+
+<section id="github">
+    <h2>Мой GitHub</h2>
+    <div class="card">
+        <p>Здесь можно посмотреть мои проекты и репозитории:</p>
+        <a href="https://github.com/salim1251/education" target="_blank" class="btn">
+            Мой GitHub профиль
+        </a>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Контакты</h2>
+    <div class="card">
+        <p>Email: kazlykovs@gmail.com</p>
+        <p>Телефон: +7 747 322 5435</p>
+        <a href="mailto:kazlykovs@gmail.com" class="btn">Связаться</a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Казлыков Салим | Polytech College | Группа П23-3Е
+</footer>
+
+</body>
+</html>
 
